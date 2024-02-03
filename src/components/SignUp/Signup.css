@@ -3,7 +3,7 @@
   border-radius: 4px;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 50%);
   padding-bottom: 0px;
-  margin-top: 40px;
+  margin-top: 75px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,3 +47,5 @@
 label{
   text-align: left;
 }
+
+

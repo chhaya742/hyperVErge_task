@@ -1,5 +1,4 @@
 .home {
-    /* text-align: center; */
     background: #fff;
     border-radius: 4px;
     box-shadow: 0px 4px 20px rgb(0 0 0 / 50%);
@@ -15,84 +14,39 @@
 }
 
 .mono {
-    display: inline-block;
-    position: relative;
-    width: 10%;
-    height: 10%px;
-    overflow: hidden;
+    width: 40px;
+    height: 40px;
     border-radius: 49%;
-    margin-right: 9px;
-    margin-left: 6px;
-
 }
 
-.sc-dMVFSy.bPouWk {
-    background: #15171c;
+.profile-pic {
+    width: 6vh;
+    height: 6vh;
+    border-radius: 49%;
+}
+
+.main {
+    background: black;
     width: 250px;
     height: 100vh;
     display: flex;
     justify-content: center;
     position: fixed;
     left: 0%;
-    top: 50px;
+    top: 2.5rem;
     z-index: 10;
 }
 
-
-.sc-lkkFJn.jsltpP {
-    width: 100%;
-}
-
-.sc-gFvbXA.erhRXx {
-    margin-left: 2rem;
-    font-size: 2rem;
-    height: 80px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.sc-gFvbXA.erhRXx {
-    display: flex;
-    color: #e1e9fc;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    list-style: none;
-    height: 60px;
-    text-decoration: none;
-    font-size: 18px;
-    margin-right: 12px;
-
-
-}
-
-.sc-gFvbXA.erhRXx:hover {
-    background: #252831;
-    border-left: 4px solid #252831;
-    cursor: pointer;
-}
-
-
-
-.Icon {
-    margin-right: 24px;
-    margin-left: -37px;
-
-}
 
 .active>li:focus {
     background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7));
 }
 
-
-
-/* sdfghyjuikl */
-
 .dropdown {
     position: relative;
+    right: 1rem;
     display: inline-block;
-
+   
 }
 
 .dropdown-content {
@@ -100,11 +54,14 @@
     position: absolute;
     background-color: #f9f9f9;
     color: black;
-    min-width: 160px;
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
     z-index: 1;
     width: max-content;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 100vh; /* Set a maximum height for the dropdown content */
+    z-index: 1;
 }
 
 .dropdown:hover .dropdown-content {
@@ -114,5 +71,5 @@
 }
 
 .dropdown-option {
-    color: black
+    color: black;
 }

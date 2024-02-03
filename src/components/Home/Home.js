@@ -7,10 +7,10 @@ import NavBar from '../NavBar/NavBar'
 
  const HomePage=()=> {
     const user=localStorage.getItem("authToken")
-    console.log(user);
+    // console.log(user);
     return(
         <div>
-        {user ? <NavBar />:<LoginForm/>}
+        {user ? <Dashboard/>:<LoginForm/>}
         </div>
     )
 }

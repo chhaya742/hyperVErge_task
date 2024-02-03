@@ -12,6 +12,7 @@ const Login = () => {
     const { loginPage, login } = useAuth();
     const [error, setError] = useState({ isError: true })
     const [loginDetail, setLoginDetail] = useState({ Email: "", Password: "", });
+    const [showPassword, setShowPassword] = useState(false)
 
     useEffect(() => {
         if (!error.isError) {
@@ -31,8 +32,7 @@ const Login = () => {
     };
     const user = localStorage.getItem("authToken")
     return (
-        <>
-            {user && <NavBar />}
+        <div style={{display:"flex",justifyContent:"center",marginLeft: "249px"}}>
             <div className="iApp">
                 <img src={logo} className="logo" alt="iNoteBook" />
                 <div className='form'>
@@ -43,9 +43,13 @@ const Login = () => {
                     </div>
                     <div className='input-group'>
                         <label htmlFor='Password'>Password </label>
-                        <input type="Password" name="Password" placeholder="Chhaya@123" onChange={(e) => inputHandler(e.target)} />
+                        <input type={showPassword ? "text" : "password"} minLength="8" name="Password" placeholder="Chhaya@123" onChange={(e) => inputHandler(e.target)} />
                         {error.Password && <div style={{ color: "red" }}>{error.Password}</div>}
+                        <div style={{ display: "flex", alignItems: "center ", gap: "0.5rem", marginTop: "0.5rem" }}> <input id="check" type="checkbox" value={showPassword} onChange={() => setShowPassword((prev) => !prev)} />
+                            <label>show password</label>
+                        </div>
                     </div>
+
                     <div style={{ position: "absolute" }}>
                         <div>
                             <button className='primary' onClick={clickHandler}>LogIn</button>
@@ -55,8 +59,8 @@ const Login = () => {
                         <Link className='secondry' style={{ float: "right" }} to="/signup" >Signup</Link>
                     </div>
                 </div>
-            </div>;
-        </>
+            </div>
+        </div>
     )
 
 };
