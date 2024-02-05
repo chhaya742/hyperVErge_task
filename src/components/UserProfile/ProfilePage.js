@@ -11,8 +11,8 @@ const ProfilePage = () => {
     const navigate = useNavigate();
     const { getUserByID, setUserData, userData, updateUserPage } = useAuth();
     const [error, setError] = useState({ isError: true })
-    const [userDetail, setUserDetail] = useState({ Name: "", Address: "", Email: "", Password: "", Phone: "", Profile_pic: "" });
-    // console.log(userDetail);
+    const [file, setFile] = useState()
+    const [userDetail, setUserDetail] = useState({ Name: "", Address: "", Email: "", Password: "", Phone: "", Profile_pic: file });
     var { id } = useParams();
 
     const data = {
@@ -24,11 +24,13 @@ const ProfilePage = () => {
     }, [])
 
     const inputHandler = (e) => {
-        // console.log(userData);
         const { name, value } = e
         setUserData({ ...userData, [name]: value })
     }
-
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0])
+        setUserData({ ...userData, Profile_pic: e.target.files[0] })
+    }
     const onSubmit = async () => {
         updateUserPage(userData);
     };
@@ -40,7 +42,6 @@ const ProfilePage = () => {
         navigate("/login")
     }
     const token = localStorage.getItem("authToken")
-    console.log("userData",userData);
     return (
         <>
             <div style={{ display: "flex", justifyContent: "center", marginLeft: "249px" }}>
@@ -85,10 +86,10 @@ const ProfilePage = () => {
                             </div>
                             <div className='col-md-6 mb-4'>
                                 <label htmlFor='Profile'>Profile
-                                    <input className='form-control select-input placeholder-active active' type="file" name="Profile_pic" placeholder=""  onChange={(e) => inputHandler(e.target)} /> 
+                                    <input className='form-control select-input placeholder-active active' type="file" name="Profile_pic" placeholder="" onChange={(e) => handleFileChange(e)} />
                                     {/* {error.Profile && <div style={{ color: "red" }}>{error.Profile}</div>} */}
-                                </label> 
-                            </div> 
+                                </label>
+                            </div>
                         </div>
 
                         <div style={{ position: "absolute" }}>

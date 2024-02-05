@@ -4,7 +4,6 @@ import { BsCircle } from "react-icons/bs";
 
 const user = localStorage.getItem("user")
 const isAdmin = JSON.parse(user)?.userDetials.Role
-console.log(isAdmin);
 export const SidebarData = [];
 
 if (isAdmin == 2) {

@@ -32,7 +32,7 @@ const Login = () => {
     };
     const user = localStorage.getItem("authToken")
     return (
-        <div style={{display:"flex",justifyContent:"center",marginLeft: "249px"}}>
+        <div style={{ display: "flex", justifyContent: "center", marginLeft: "249px" }}>
             <div className="iApp">
                 <img src={logo} className="logo" alt="iNoteBook" />
                 <div className='form'>
@@ -46,7 +46,7 @@ const Login = () => {
                         <input type={showPassword ? "text" : "password"} minLength="8" name="Password" placeholder="Chhaya@123" onChange={(e) => inputHandler(e.target)} />
                         {error.Password && <div style={{ color: "red" }}>{error.Password}</div>}
                         <div style={{ display: "flex", alignItems: "center ", gap: "0.5rem", marginTop: "0.5rem" }}> <input id="check" type="checkbox" value={showPassword} onChange={() => setShowPassword((prev) => !prev)} />
-                            <label>show password</label>
+                            <label htmlFor='show password'>show password</label>
                         </div>
                     </div>
 

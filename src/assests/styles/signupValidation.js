@@ -27,7 +27,7 @@ export const loginValidation = (userInput) => {
 
 export const signupValidChecker = (userInput) => {
 
-    const { Name, Address, Email, Password, Phone, Profile_pic } = userInput
+    const { Name, Address, Email, Password, Phone } = userInput
     const error = {};
     let isError = false;
     if (!Name) {
@@ -48,10 +48,6 @@ export const signupValidChecker = (userInput) => {
     }
     if (!Address) {
         error.Address = "Address is required";
-        isError = true;
-    }
-    if (!Profile_pic) {
-        error.Profile_pic = "Profile_pic is required";
         isError = true;
     }
     error.isError = isError;

@@ -10,7 +10,7 @@ import { IoMdSettings } from "react-icons/io";
 import { IoIosHelpCircle } from "react-icons/io";
 
 import mono from '../../assests/imagelogo.png';
-import SideBar from "./SideBar";
+import SideBar from "../dashboard/SideBar";
 
 const NavBar = () => {
   const [dropdown, setDropdown] = useState(false);
@@ -52,7 +52,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <SideBar user={user} />
+      {/* <SideBar user={user} /> */}
     </div>
   );
 }

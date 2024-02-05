@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../Context/AuthContext'
 import DataTable from 'react-data-table-component'
 import ReactPaginate from 'react-paginate'
-import { Edit } from "react-feather"
 
 const Listing = () => {
   const { adminListPage, adminTotal, adminData } = useAuth()
@@ -64,46 +63,53 @@ const Listing = () => {
         limit: parseInt(e.target.value)
       }
       setQuery(updatedQuery)
-      adminListPage(updatedQuery)
+      if(query){
+        
+        adminListPage(updatedQuery)
+  
+      }
     }
-
     return (
       <div className="mt-2">
-        <div className="container position-absolute">
-          <div className="row">
-            <div className="col-sm-1">
+        <div >
+          <div className="row text-light">
+            <div className="col-sm-2">
               <select className="form-select form-select-sm" onChange={updateLimit} value={query.limit}>
                 {limit.map(value => (<option value={value} key={value}>{value}</option>))}
               </select>
             </div>
-            <div className="col-sm-1">
+            <div className="col-sm-2">
               Total: {adminTotal}
+            </div>
+            <div className="col-sm-1">
+              <ReactPaginate
+                previousLabel={''}
+                nextLabel={''}
+                forcePage={Math.floor(query.offset / query.limit)}
+                onPageChange={page => handlePagination(page)}
+                pageCount={Math.ceil(adminTotal / query.limit)}
+                breakLabel={'...'}
+                pageRangeDisplayed={2}
+                marginPagesDisplayed={2}
+                activeClassName='active'
+                pageClassName='page-item'
+                breakClassName='page-item'
+                nextLinkClassName='page-link'
+                pageLinkClassName='page-link'
+                breakLinkClassName='page-link'
+                previousLinkClassName='page-link'
+                nextClassName='page-item next-item'
+                previousClassName='page-item prev-item'
+                containerClassName='pagination react-paginate separated-pagination pagination-sm justify-content-end pe-1'
+              />
             </div>
           </div>
         </div>
-        <ReactPaginate
-          previousLabel={''}
-          nextLabel={''}
-          forcePage={Math.floor(query.offset / query.limit)}
-          onPageChange={page => handlePagination(page)}
-          pageCount={Math.ceil(adminTotal / query.limit)}
-          breakLabel={'...'}
-          pageRangeDisplayed={2}
-          marginPagesDisplayed={2}
-          activeClassName='active'
-          pageClassName='page-item'
-          breakClassName='page-item'
-          nextLinkClassName='page-link'
-          pageLinkClassName='page-link'
-          breakLinkClassName='page-link'
-          previousLinkClassName='page-link'
-          nextClassName='page-item next-item'
-          previousClassName='page-item prev-item'
-          containerClassName='pagination react-paginate separated-pagination pagination-sm justify-content-end pe-1'
-        />
+
       </div>
     )
   }
+
 
   const handleSort = (column, sortDirection) => {
     const updatedQuery = {
@@ -120,11 +126,11 @@ const Listing = () => {
       <div>
         {/* <ProfilePage/> */}
         <div style={{ display: "flex", justifyContent: "center", textAlign: "center" }}>
-          <div style={{ position: "relative", top: "4rem", width: "79%", left: "8rem", zIndex:"0"}}>
-            <div className="d-flex justify-content-between align-center ">
+          <div style={{ position: "relative", top: "4rem", width: "80%", left: "6.5rem", zIndex:"0"}}>
+            <div className="d-flex justify-content-between align-center text-light ">
               <h4><b>Admins</b></h4>
             </div>
-            <div className='react-dataTable' style={{ overflowX: 'auto', maxHeight: '400px' }}>
+            <div className='react-dataTable' style={{maxHeight: '100%' }}>
               <DataTable
                 noHeader
                 pagination

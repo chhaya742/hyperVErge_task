@@ -1,20 +1,24 @@
-import React from 'react'
-import NavBar from '../NavBar/NavBar'
-import HomePage from '../Home/Home'
-import { Link, useNavigate } from 'react-router-dom'
+// Index.js
+
+import React from 'react';
+import './index.css';
+import SideBar from './SideBar';
 
 const Index = () => {
-  const token = localStorage.getItem("authToken")
-  const navigate = useNavigate();
+  const user = localStorage.getItem("user");
+  const isAdmin = JSON.parse(user)?.userDetials.Role
   return (
-    <div style={{ display: "flex" ,justifyContent: "center"}}>
-      {token ? <div style={{ marginTop: "5rem" }}>
-        <h5>Welcome To HyperVerge</h5>
-      </div>: <div style={{ marginTop: "5rem" }}><Link to="/">"Back to Home"</Link></div>}
+    <>
+      <div className="container">
+        <div className="banner-container">
+          <div className="overlay-text">
+            <h5>Welcome To HyperVerge</h5>
+          </div>
+        </div>
+      </div>
+    </>
 
-    </div>
-  )
+  );
 }
 
-export default Index
-
+export default Index;

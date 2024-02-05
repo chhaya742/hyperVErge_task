@@ -7,8 +7,7 @@ import { toast } from 'react-toastify'
 import "./user.css"
 
 const Listing = () => {
-  const { userListPage, total, data, deleteUser } = useAuth();
-  const [editModal, setEditModal] = useState(false);
+  const { userListPage, total, data, deleteUser, authToken, addRegistrationLink } = useAuth();
   const [showAlert, setShowAlert] = useState(false);
   const [deleteRow, setDeleteRow] = useState(null);
 
@@ -23,8 +22,14 @@ const Listing = () => {
   })
 
   useEffect(() => {
-    userListPage(query)
-  }, [query]);
+
+    if (authToken) {
+      userListPage(query)
+    }
+
+
+
+  }, []);
 
   const Alert = () => {
     const handleDeleteConfirmation = () => {
@@ -92,7 +97,10 @@ const Listing = () => {
       offset: page.selected * query.limit
     }
     setQuery(updatedQuery)
-    userListPage(updatedQuery)
+    if (query) {
+      userListPage(updatedQuery)
+
+    }
   }
 
   const CustomPagination = () => {
@@ -104,13 +112,16 @@ const Listing = () => {
         limit: parseInt(e.target.value)
       }
       setQuery(updatedQuery)
-      userListPage(updatedQuery)
+      if (query) {
+
+        userListPage(updatedQuery)
+
+      }
     }
     return (
       <div className="mt-2">
-        <div className="container">
-          <div className="row">
-
+        <div >
+          <div className="row text-light">
             <div className="col-sm-2">
               <select className="form-select form-select-sm" onChange={updateLimit} value={query.limit}>
                 {limit.map(value => (<option value={value} key={value}>{value}</option>))}
@@ -148,15 +159,6 @@ const Listing = () => {
     )
   }
 
-  const handleSort = (column, sortDirection) => {
-    const updatedQuery = {
-      ...query,
-      order: sortDirection,
-      sort: column.column
-    }
-    setQuery(updatedQuery)
-    userListPage(updatedQuery)
-  }
 
   function generateUniqueLink() {
     const token = Math.random().toString(36).substr(2, 10);
@@ -169,6 +171,8 @@ const Listing = () => {
   const copyLink = () => {
     navigator.clipboard.writeText(registrationLink)
       .then(() => {
+        console.log("registrationLink",registrationLink);
+        addRegistrationLink({ Link:registrationLink })
         toast.success('Link copied to clipboard: ')
       })
       .catch(error => {
@@ -180,19 +184,19 @@ const Listing = () => {
     <>
       <div>
         <div style={{ display: "flex", justifyContent: "center", textAlign: "center" }}>
-          <div style={{ position: "relative", top: "4rem", width: "79%", left: "8rem", zIndex: "0" }}>
-            <div className="d-flex justify-content-between align-center ">
+          <div style={{ position: "relative", top: "4rem", width: "80%", left: "6.5rem", zIndex: "0" }}>
+            <div className="d-flex justify-content-between align-center text-light">
               <h4><b>All Users</b></h4>
               <button className="btn btn-success m-2" onClick={copyLink}>Create Link</button>
             </div>
-            <div className='react-dataTable' style={{ overflowX: 'auto', maxHeight: '400px' }}>
+            <div className='react-dataTable' style={{ maxHeight: '400px' }}>
               <DataTable
                 noHeader
                 pagination
                 data={data}
                 columns={basicColumns}
-                className='react-dataTable'
-                onSort={handleSort}
+                // className='react-dataTable'
+                // onSort={handleSort}
                 paginationComponent={CustomPagination}
                 paginationDefaultPage={query.offset + 1}
                 paginationServer
