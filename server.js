@@ -15,7 +15,12 @@ app.use(fileUpload({
 }));
 
 var cors = require('cors');
-app.use(cors());
+
+app.use(cors({
+  origin:["https://deploy-mern-lwhq.vercel.app"],
+  methods:["POST","GET"],
+  credentials:false
+}));
 
 const directoryPath = path.join(__dirname, 'src/routes');
 const files = (router) => {

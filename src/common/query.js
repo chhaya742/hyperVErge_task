@@ -3,10 +3,8 @@ const knex = require("../database/config");
 
 const findAll = async (tableName, field, params) => {
     if (params) {
-        console.log(tableName,field,params);
         const data = await knex.select('*').from(tableName)
             .where(field, 'like', `%${params.search}%`)
-            console.log(data);
         return data
     } else {
         const data = await knex.select('*').from(tableName)
@@ -21,7 +19,6 @@ const insert = async (tableName, userData) => {
 }
 
 const getbyId = async (tableName, id) => {
-
     return await knex.select('*').from(tableName).where(id)
 
 }

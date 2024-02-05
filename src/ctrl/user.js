@@ -1,7 +1,7 @@
 'use strict'
 const userService = require('../service/user')
 require("../database/schema/user")
-require("../database/schema/used_invite_links")
+require("../database/schema/registration_invite_links")
 const bcrypt = require('bcrypt');
 
 const getUserbyId = (req, res) => {
@@ -15,48 +15,48 @@ const getUserbyId = (req, res) => {
 };
 
 const checkLink = async (req, res) => {
-
-    const data = {
+    const inviteToken = {
         Link: req.body.Link,
     }
-    console.log(data);
-    if(data.Link){
-        userService.insertLink(data).then((data) => {
-            if (data) {
-                res.json({ status: true, statusCode: 200, message: "Inserted successfully", data: data });
-            }
-        }).catch((err) => {
-            console.log(err);
-            res.json({ status: false, statusCode: 404, message: err.sqlMessage, data: [] })
-        });
+    // const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
+    if (inviteToken.Link) {
+        const invite = await userService.getUsedLink(inviteToken)
+        let result = Object.values(JSON.parse(JSON.stringify(invite)))[0];
+        if (result?.used == 0) {
+            // result.updated_at = currentDate
+            // result.used = true
+            // delete (result.created_at)
+            // await userService.updateLink(result)
+            res.json({ status: true, statusCode: 404, message: "Add Succesfully", data: [] })
+        } else {
+            res.json({ status: false, statusCode: 404, message: "Invalid invite link. Please contact your Admin.", data: [] })
+        }
+    } else {
+        res.json({ status: false, statusCode: 404, message: "Invalid invite link. Please contact your Admin.", data: [] })
     }
-   
-
-    // const usedLink = await userService.getUsedLink()
-    // let result = Object.values(JSON.parse(JSON.stringify(usedLink)))[0];
-    // if (result) {
-
-    // }
-    // console.log("result", result);
-
-    // const usedInviteLinks = new Set();
-
-    // if (usedInviteLinks.has(inviteLink)) {
-    //     return res.status(400).json({ error: 'Invalid invite link. Please contact your Admin.' });
-    // }
-
 }
-const createUser = (req, res) => {
+const createUser = async(req, res) => {
     const data = {
         Name: req.body.Name,
         Email: req.body.Email,
         Address: req.body.Address,
         Password: bcrypt.hashSync(req.body.Password, 12),
         Phone: req.body.Phone,
-        Profile_pic: req.body.Profile_pic
+        Profile_pic: res.filepath
     }
-    userService.createUser(data).then((data) => {
+    const inviteLink={
+        Link:req.body.inviteLink
+    }
+    const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    const invite = await userService.getUsedLink(inviteLink)
+    let result = Object.values(JSON.parse(JSON.stringify(invite)))[0];
+    userService.createUser(data).then(async(data) => {
         if (data) {
+            result.updated_at = currentDate
+            result.used = true
+            delete (result.created_at)
+            await userService.updateLink(result)
             res.json({ status: true, statusCode: 200, message: "Created successfully", data: data });
         }
     }).catch((err) => {
@@ -80,17 +80,16 @@ const loginUser = (req, res) => {
 }
 
 const updateUser = (req, res) => {
-
     let userData = req.body
-    delete (userData.created_at)
-    userData.updated_at = new Date();
-    console.log(userData);
-    userService.updateuser(req.body).then((data) => {
-        res.json({ status: true, statusCode: 200, message: "updated successfully", data: data })
-    }).catch((err) => {
-        console.log(err);
-        res.json({ status: false, statusCode: 404, message: err.sqlMessage, data: [] })
-    })
+    userData.updated_at = new Date()
+    userData.Profile_pic = res.filepath
+    userData.Password = bcrypt.hashSync(req.body.Password, 12),
+        userService.updateuser(userData).then((data) => {
+            res.json({ status: true, statusCode: 200, message: "updated successfully", data: data })
+        }).catch((err) => {
+            console.log(err);
+            res.json({ status: false, statusCode: 404, message: err.sqlMessage, data: [] })
+        })
 }
 
 const getallUsers = async (req, res) => {
@@ -136,7 +135,6 @@ const getAdminList = async (req, res) => {
         const end = start + parseInt(limit);
         const total = userData.length;
         userData = userData.length > limit ? userData.slice(start, end) : userData;
-
         res.json({
             status: true, message: 'Operation successful.', data: { users: await userData, total: total }
         });
@@ -144,12 +142,11 @@ const getAdminList = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.json({ status: false, message: error.message });
-
     }
 };
 
 const deleteUser = (req, res) => {
-    console.log(req.body);
+    console.log(req.body.id);
     userService.deleteUser(req.body.id).then((data) => {
         res.json({ status: true, statusCode: 200, message: "delete successfully", data: data })
     }).catch((err) => {
@@ -163,6 +160,26 @@ const userLogout = (req, res) => {
     res.json({ message: "logout success" })
 }
 
+const addLink = (req, res) => {
+    console.log(req.body.Link);
+    if (req.body.Link) {
+        const data = {
+            Link: req.body.Link,
+        }
+        userService.insertLink(data).then((data) => {
+            if (data) {
+
+                res.json({ status: true, statusCode: 200, message: "Created successfully", data: data });
+            }
+        }).catch((err) => {
+            console.log(err);
+            res.json({ status: false, statusCode: 404, message: err.sqlMessage, data: [] })
+        });
+    } else {
+        res.json({ status: false, statusCode: 404, message: "Link Is undefined", data: [] })
+    }
+
+};
 const userCtrl = {
     getUserbyId,
     createUser,
@@ -172,6 +189,7 @@ const userCtrl = {
     loginUser,
     userLogout,
     getAdminList,
-    checkLink
+    checkLink,
+    addLink
 }
 module.exports = { userCtrl };

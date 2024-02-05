@@ -14,8 +14,9 @@ const createUser = async (userData) => {
 }
 
 const insertLink=async(data)=>{
-    var data = await query.insert('used_invite_links', data);
-    return data;
+    var data = await query.insert('registration_invite_links', data);
+    let result = Object.values(JSON.parse(JSON.stringify(data)))[0];
+    return result;
 }
 const loginuser = async (userData) => {
     var data = await query.getbyId('user', { "Email": userData.Email });
@@ -43,7 +44,9 @@ const getAllUsers = async (filter) => {
 };
 
 const getUsedLink = async (filter) => {
-    return query.findAll('used_invite_links', "Link", filter);
+    let data=query.getbyId('registration_invite_links', filter);
+    return data
+
 };
 
 const getAllAdmins = async (filter) => {
@@ -59,6 +62,10 @@ const deleteUser = async (id) => {
     return query.Delete('user', id);
 };
 
+const updateLink = async (data) => {
+    return query.update('registration_invite_links',  data, { Link: data.Link });
+};
+
 const userService = {
     createUser,
     loginuser,
@@ -68,6 +75,8 @@ const userService = {
     deleteUser,
     getAllAdmins,
     getUsedLink,
-    insertLink
+    insertLink,
+    updateLink
+    
 };
 module.exports = userService;

@@ -7,7 +7,7 @@ authentication = (req, res, next) => {
     const token = req.headers?.authorization?.split(' ')[1];
     if (req.headers?.authorization == undefined || token == undefined) {
         res.send({
-            succses: 0,
+            status: false, 
             message: "you are not authorized for this action"
         })
     }
@@ -15,10 +15,17 @@ authentication = (req, res, next) => {
         jwt.verify(token, 'chhayabagwan', (err, tokendata) => {
             if (err) {
                 console.log(err);
-                res.send({ message: "authentication  erro" });
+                res.send({
+                    status: false, 
+                    message: "you are not authorized for this action"
+                });
             }
+            
             else if (tokendata == undefined) {
-                res.send({ message: "authentication error" })
+                res.send({
+                    status: false, 
+                    message: "you are not authorized for this action"
+                })
             }
             else {
                 res.tokendata = tokendata
