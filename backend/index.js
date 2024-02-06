@@ -5,7 +5,7 @@ const router = express.Router();
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-const port = process.env.port
+const port = 4000
 const fs = require("fs")
 const path = require('path');
 const fileUpload = require('express-fileupload');
@@ -34,7 +34,7 @@ files(router)
 app.use("/", router)
 
 app.get("/", () => {
-  console.log(`server is runnig on ${port} port`);
+  console.log(`Hello World`);
 })
 
 app.listen(port, (req, res) => {
