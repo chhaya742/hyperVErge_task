@@ -18,10 +18,11 @@ var cors = require('cors');
 
 app.use(cors({
   origin:["https://deploy-mern-lwhq.vercel.app"],
-  
   methods:["POST","GET"],
   credentials:false
 }));
+
+// app.use(cors())
 
 const directoryPath = path.join(__dirname, 'src/routes');
 const files = (router) => {
@@ -34,11 +35,12 @@ const files = (router) => {
 files(router)
 app.use("/", router)
 
-app.get("/", () => {
-  console.log(`Hello World`);
-})
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 
 app.listen(port, (req, res) => {
   console.log(`server is runnig on ${port} port`);
 
 });
+
