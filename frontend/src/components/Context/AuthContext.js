@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
 
     const loginPage = async (data) => {
         try {
-            const response = await axios.post("http://localhost:4000/user/login", data);
+            const response = await axios.post("https://hyper-verge-api.vercel.app/user/login", data);
             if (response.data.status) {
                 localStorage.setItem("authToken", response.data.data.token);
                 localStorage.setItem("user", JSON.stringify({ userDetials: response.data.data }));
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
 
     const signupPage = async (data) => {
         try {
-            const response = await axios.post("http://localhost:4000/user/create", data);
+            const response = await axios.post("https://hyper-verge-api.vercel.app/user/create", data);
             // console.log(response);
             if (response.data.status) {
                 toast.success(response.data.message)
@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
 
     const checkRegistrationLink = async (data) => {
         try {
-            const response = await axios.post("http://localhost:4000/check-link", data, {
+            const response = await axios.post("https://hyper-verge-api.vercel.app/check-link", data, {
                 headers: {
                     Authorization: `bearer ${authToken}`,
                     'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ const AuthProvider = ({ children }) => {
     }
     const addRegistrationLink = async (data) => {
         try {
-            const response = await axios.post("http://localhost:4000/add-link", data, {
+            const response = await axios.post("https://hyper-verge-api.vercel.app/add-link", data, {
                 headers: {
                     Authorization: `bearer ${authToken}`,
                     'Content-Type': 'application/json'
@@ -102,7 +102,7 @@ const AuthProvider = ({ children }) => {
         let formData = new FormData();
         formData.append('Profile_pic', userData.Profile_pic);
         try {
-            const response = await axios.post("http://localhost:4000/user/update", formData, {
+            const response = await axios.post("https://hyper-verge-api.vercel.app/user/update", formData, {
                 headers: {
                     Authorization: `bearer ${authToken}`,
                     'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ const AuthProvider = ({ children }) => {
 
     const getUserByID = async (data) => {
         try {
-            const response = await axios.post("http://localhost:4000/user/id", { id: data },
+            const response = await axios.post("https://hyper-verge-api.vercel.app/user/id", { id: data },
                 {
                     headers: {
                         Authorization: `bearer ${authToken}`,
@@ -144,7 +144,7 @@ const AuthProvider = ({ children }) => {
     const deleteUser = async (data) => {
         console.log(data);
         try {
-            const response = await axios.post("http://localhost:4000/user/delete", { id: data }, {
+            const response = await axios.post("https://hyper-verge-api.vercel.app/user/delete", { id: data }, {
                 headers: {
                     Authorization: `bearer ${authToken}`,
                     'Content-Type': 'application/json',
@@ -163,7 +163,7 @@ const AuthProvider = ({ children }) => {
 
     const userListPage = async (data) => {
         try {
-            const response = await axios.post("http://localhost:4000/user/list", data, {
+            const response = await axios.post("https://hyper-verge-api.vercel.app/user/list", data, {
                 headers: {
                     Authorization: `bearer ${authToken}`,
                     'Content-Type': 'application/json'
@@ -183,7 +183,7 @@ const AuthProvider = ({ children }) => {
 
     const adminListPage = async (data) => {
         try {
-            const response = await axios.post("http://localhost:4000/admin/list", data, {
+            const response = await axios.post("https://hyper-verge-api.vercel.app/admin/list", data, {
                 headers: {
                     Authorization: `bearer ${authToken}`,
                     'Content-Type': 'application/json'
