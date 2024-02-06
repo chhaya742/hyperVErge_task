@@ -144,7 +144,7 @@ const AuthProvider = ({ children }) => {
     const deleteUser = async (data) => {
         console.log(data);
         try {
-            const response = await axios.delete("http://localhost:4000/user/delete", { id: data }, {
+            const response = await axios.post("http://localhost:4000/user/delete", { id: data }, {
                 headers: {
                     Authorization: `bearer ${authToken}`,
                     'Content-Type': 'application/json',
