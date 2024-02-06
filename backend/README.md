@@ -21,3 +21,11 @@ This project is a Node.js backend application utilizing MySQL database
 1. Start the application: `npm start`
 2. The server will be running at `http://localhost:4000` 
 
+## Folder Structure
+├── schema/ # table schema
+│ └── config.js # MySQL database configuration
+├── src/controllers/ # Request handlers
+├── comman/query/ # Database queries
+├── src/ # routes definitions
+├── src/service/ # Business logic layer
+└── index.js # Main entry point of the application
