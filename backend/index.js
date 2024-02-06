@@ -18,6 +18,7 @@ var cors = require('cors');
 
 app.use(cors({
   origin:["https://deploy-mern-lwhq.vercel.app"],
+  
   methods:["POST","GET"],
   credentials:false
 }));
