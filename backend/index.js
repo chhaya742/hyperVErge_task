@@ -17,7 +17,7 @@ app.use(fileUpload({
 var cors = require('cors');
 
 app.use(cors({
-  origin:["https://deploy-mern-lwhq.vercel.app"],
+  origin:[""],
   methods:["POST","GET"],
   credentials:false
 }));
