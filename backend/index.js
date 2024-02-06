@@ -17,7 +17,7 @@ app.use(fileUpload({
 var cors = require('cors');
 
 app.use(cors({
-  origin:[""],
+  origin:["https://hyper-verge-frontend.vercel.app"],
   methods:["POST","GET"],
   credentials:false
 }));
