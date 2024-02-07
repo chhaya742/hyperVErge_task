@@ -1,0 +1,312 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "hyperVerge_APIs",
+    "dateExported": "2024-02-07T03:55:24.680Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "32a6ff58-21e2-49df-bdb6-a5b5abf657d0",
+            "colId": "ec5eb152-483c-4d03-9f24-b1190f58e78e",
+            "containerId": "",
+            "name": "user update",
+            "url": "localhost:4000/user/update",
+            "method": "PUT",
+            "sortNum": 10000,
+            "created": "2024-02-04T17:53:35.858Z",
+            "modified": "2024-02-04T17:53:35.858Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IkNoaGF5YUAxMjMiLCJpYXQiOjE3MDcwNjU4MDUsImV4cCI6MTcwNzA4NzQwNX0.nCwwm1QsiItqMLeHQCcTFo5ijEgcMF9HgiFJBu0eheA"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "id",
+                        "value": "3"
+                    },
+                    {
+                        "name": "Name",
+                        "value": "maya"
+                    },
+                    {
+                        "name": "Email",
+                        "value": "maya@gmail.com"
+                    },
+                    {
+                        "name": "Address",
+                        "value": "indore"
+                    },
+                    {
+                        "name": "Phone",
+                        "value": "9876543234"
+                    },
+                    {
+                        "name": "Password",
+                        "value": "Chhaya@123"
+                    },
+                    {
+                        "name": "Profile_pic",
+                        "value": ""
+                    },
+                    {
+                        "name": "updated_at",
+                        "value": "",
+                        "isDisabled": true
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "Profile_pic",
+                        "value": "c:\\Users\\Win 10\\Pictures\\Screenshots\\Screenshot (18).png"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "aabcc490-712c-43fe-86b8-e848f01d054b",
+            "colId": "ec5eb152-483c-4d03-9f24-b1190f58e78e",
+            "containerId": "",
+            "name": "user register",
+            "url": "localhost:4000/user/create",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-04T17:53:43.880Z",
+            "modified": "2024-02-04T17:53:43.880Z",
+            "headers": [
+                {
+                    "name": "authorization",
+                    "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IkNoaGF5YUAxMjMiLCJpYXQiOjE3MDY5Nzk2MTMsImV4cCI6MTcwNzAwMTIxM30.KvCn4y8eFoydApcW7SiInsf5AfvMbGJE3uSEeGSkUVw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "Name",
+                        "value": "soniya"
+                    },
+                    {
+                        "name": "Email",
+                        "value": "soniya@gmail.com"
+                    },
+                    {
+                        "name": "Address",
+                        "value": "indore"
+                    },
+                    {
+                        "name": "Phone",
+                        "value": "9876567876"
+                    },
+                    {
+                        "name": "Password",
+                        "value": "Chhaya@123"
+                    },
+                    {
+                        "name": "Profile_pic",
+                        "value": "",
+                        "isDisabled": true
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "Profile_pic",
+                        "value": "c:\\Users\\Win 10\\Pictures\\Screenshots\\Screenshot (7).png"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "4d1fc4e2-325b-4e5d-82cc-9fb5ee91736e",
+            "colId": "ec5eb152-483c-4d03-9f24-b1190f58e78e",
+            "containerId": "",
+            "name": "localhost:4000/check-link",
+            "url": "localhost:4000/check-link",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-04T17:53:57.476Z",
+            "modified": "2024-02-04T17:53:57.476Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\"Link\":\"localhost:3000/user\"}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "383966b5-8d49-41b3-8686-b43a31ffed9e",
+            "colId": "ec5eb152-483c-4d03-9f24-b1190f58e78e",
+            "containerId": "",
+            "name": "delete user",
+            "url": "localhost:4000/user/delete",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-02-04T17:54:03.416Z",
+            "modified": "2024-02-04T17:54:03.416Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IkNoaGF5YUAxMjMiLCJpYXQiOjE3MDcwNjU4MDUsImV4cCI6MTcwNzA4NzQwNX0.nCwwm1QsiItqMLeHQCcTFo5ijEgcMF9HgiFJBu0eheA"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\"id\":27}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "829bd4c6-28db-4e0b-aa82-d9d14216e33b",
+            "colId": "ec5eb152-483c-4d03-9f24-b1190f58e78e",
+            "containerId": "",
+            "name": "admin list",
+            "url": "http://localhost:4000/admin/list",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-02-04T17:54:11.244Z",
+            "modified": "2024-02-04T17:54:11.244Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IkNoaGF5YUAxMjMiLCJpYXQiOjE3MDcwNjU4MDUsImV4cCI6MTcwNzA4NzQwNX0.nCwwm1QsiItqMLeHQCcTFo5ijEgcMF9HgiFJBu0eheA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "185e7d80-57a7-4cd6-81a4-0be116f9fb59",
+            "colId": "ec5eb152-483c-4d03-9f24-b1190f58e78e",
+            "containerId": "",
+            "name": "user list",
+            "url": "http://localhost:4000/user/list",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2024-02-04T17:54:43.378Z",
+            "modified": "2024-02-04T17:54:43.378Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IkNoaGF5YUAxMjMiLCJpYXQiOjE3MDcwNjU4MDUsImV4cCI6MTcwNzA4NzQwNX0.nCwwm1QsiItqMLeHQCcTFo5ijEgcMF9HgiFJBu0eheA"
+                }
+            ],
+            "params": [
+                {
+                    "name": "page",
+                    "value": "1",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "search",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "limit",
+                    "value": "1",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\"offset\":\"1\",\n  \"limit\":\"10\",\n  \"search\":\"riya\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c83a6f8b-ed0a-4507-a95f-a1279ac3856a",
+            "colId": "ec5eb152-483c-4d03-9f24-b1190f58e78e",
+            "containerId": "",
+            "name": "get user by id",
+            "url": "http://localhost:4000/user/id",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-02-04T17:54:53.020Z",
+            "modified": "2024-02-04T17:54:53.020Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\"id\":6}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f08ed86f-32e3-46e4-b446-bba7f109f39d",
+            "colId": "ec5eb152-483c-4d03-9f24-b1190f58e78e",
+            "containerId": "",
+            "name": "Login",
+            "url": "localhost:4000/user/login",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-02-04T17:55:01.699Z",
+            "modified": "2024-02-04T17:55:01.699Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"Email\": \"chhaya@gmail.com\",\n  \"Password\": \"Chhaya@123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ab0b2d57-3ff0-4e79-b2e2-e61606184541",
+            "colId": "ec5eb152-483c-4d03-9f24-b1190f58e78e",
+            "containerId": "",
+            "name": "user logout",
+            "url": "localhost:4000/user/logout",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-02-04T17:56:25.376Z",
+            "modified": "2024-02-04T17:56:25.376Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4232a4e2-7b3d-453a-b4bd-b11715b7453a",
+            "colId": "ec5eb152-483c-4d03-9f24-b1190f58e78e",
+            "containerId": "",
+            "name": "store invite link",
+            "url": "localhost:4000/add-link",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2024-02-07T03:55:16.899Z",
+            "modified": "2024-02-07T03:55:16.899Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\"Link\":\"\"}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
